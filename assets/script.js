@@ -1,8 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
-// in the html.
+// in the html.\
+
 
 $(function () {
+  //Assignment section
 const hourNine = document.getElementById('hour-9');
 const hourTen = document.getElementById('hour-10');
 const hourEleven = document.getElementById('hour-11');
@@ -12,20 +14,34 @@ const hourFourteen = document.getElementById('hour-14');
 const hourFifteen = document.getElementById('hour-15');
 const hourSixteen = document.getElementById('hour-16');
 const hourSeventeen = document.getElementById('hour-17');
+let saveBtn = document.querySelectorAll('.saveBtn');
+let toDoList = document.querySelectorAll('.description');
+let toDoText;
+
 
 let hourList = ["", "", "", "", "", "", "", "", "", hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen];
 
 //Create an if else statement inside a for loop to hardcode class styles to different times.
 for (let i = 9; i < hourList.length; i++) {
   if (dayjs().hour() == [i]) {
-  hourList[i].setAttribute('style', 'background-color: #ff6961');
+    hourList[i].setAttribute('style', 'background-color: #ff6961');
 } else if (dayjs().hour() > [i]) {
-  console.log('past');
-  hourList[i].setAttribute('style', 'background-color: #d3d3d3');
+    console.log('past');
+    hourList[i].setAttribute('style', 'background-color: #d3d3d3');
   } else {
     hourList[i].setAttribute('style', 'background-color: #77dd77');
   };
 };
+
+  //Needs to set Item inside local storage fo rretrieval on reload
+  $(saveBtn).click(function () {
+    // Get nearby values of the description in JQuery
+    var text = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+    // Save text in local storage
+    localStorage.setItem(time, text);
+});
+
 
   // If id hour == dayjs h set attrib class present
   //else if hour < set attr class past
