@@ -15,9 +15,6 @@ const hourFifteen = document.getElementById('hour-15');
 const hourSixteen = document.getElementById('hour-16');
 const hourSeventeen = document.getElementById('hour-17');
 let saveBtn = document.querySelectorAll('.saveBtn');
-let toDoList = document.querySelectorAll('.description');
-let toDoText;
-
 
 let hourList = ["", "", "", "", "", "", "", "", "", hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen];
 
@@ -36,34 +33,41 @@ for (let i = 9; i < hourList.length; i++) {
   //Needs to set Item inside local storage fo rretrieval on reload
   $(saveBtn).click(function () {
     // Get nearby values of the description in JQuery
-    var text = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id");
+    var textArea = $(this).siblings(".description").val();
+    var timeBlock = $(this).parent().attr("id");
     // Save text in local storage
-    localStorage.setItem(time, text);
+    localStorage.setItem(timeBlock, textArea);
 });
 
+//Need a function to retrieve data on refresh
+let hourNineValue= localStorage.getItem('hour-9')
+$('#hour-9 textarea').val(hourNineValue)
 
-  // If id hour == dayjs h set attrib class present
-  //else if hour < set attr class past
-  //else set class future
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
-    
+let hourTenValue= localStorage.getItem('hour-10')
+$('#hour-10 textarea').val(hourTenValue)
 
 
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
+let hourElevenValue= localStorage.getItem('hour-11')
+$('#hour-11 textarea').val(hourElevenValue)
+
+let hourTwelveValue= localStorage.getItem('hour-12')
+$('#hour-12 textarea').val(hourTwelveValue)
+
+let hourThirteenValue= localStorage.getItem('hour-13')
+$('#hour-13 textarea').val(hourThirteenValue)
+
+let hourFourteenValue= localStorage.getItem('hour-14')
+$('#hour-14 textarea').val(hourFourteenValue)
+
+let hourFifteenValue= localStorage.getItem('hour-15')
+$('#hour-15 textarea').val(hourFifteenValue)
+
+let hourSixteenValue= localStorage.getItem('hour-16')
+$('#hour-16 textarea').val(hourSixteenValue)
+
+let hourSeventeenValue= localStorage.getItem('hour-17')
+$('#hour-17 textarea').val(hourSeventeenValue)
+
 
     setInterval(() =>
 {
