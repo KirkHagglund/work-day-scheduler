@@ -13,22 +13,19 @@ const hourFifteen = document.getElementById('hour-15');
 const hourSixteen = document.getElementById('hour-16');
 const hourSeventeen = document.getElementById('hour-17');
 
-let hourList = ["", "", "", "", "", "", "", "", hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen];
+let hourList = ["", "", "", "", "", "", "", "", "", hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen];
 
-//If the current hour from day js is equal to the array index number of any hourList item(variable), then apply class present,
-//else if the current hour from day js is greater than the array index number, apply class past
-//else apply class future
-for (let i = 1; i < hourList.length; i++) {
-if (dayjs().hour() == hourList[i]) {
-  console.log('present')
-} else if (dayjs().hour() > hourList[i]) {
-    console.log('past');
+//Create an if else statement inside a for loop to hardcode class styles to different times.
+for (let i = 9; i < hourList.length; i++) {
+  if (dayjs().hour() == [i]) {
+  hourList[i].setAttribute('style', 'background-color: #ff6961');
+} else if (dayjs().hour() > [i]) {
+  console.log('past');
+  hourList[i].setAttribute('style', 'background-color: #d3d3d3');
   } else {
-    console.log('future');
+    hourList[i].setAttribute('style', 'background-color: #77dd77');
   };
 };
-
-console.log(dayjs().hour());
 
   // If id hour == dayjs h set attrib class present
   //else if hour < set attr class past
