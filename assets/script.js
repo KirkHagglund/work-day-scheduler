@@ -1,10 +1,5 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.\
-
-
 $(function () {
-  //Assignment section
+  //Assignment section for timeblocks and save buttons
 const hourNine = document.getElementById('hour-9');
 const hourTen = document.getElementById('hour-10');
 const hourEleven = document.getElementById('hour-11');
@@ -16,9 +11,10 @@ const hourSixteen = document.getElementById('hour-16');
 const hourSeventeen = document.getElementById('hour-17');
 let saveBtn = document.querySelectorAll('.saveBtn');
 
+//Array with empty strings and variables corresponding to each timeblock
 let hourList = ["", "", "", "", "", "", "", "", "", hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen];
 
-//Create an if else statement inside a for loop to hardcode class styles to different times.
+//Create an if else statement inside a for loop to hardcode class styles to different times dynamically
 for (let i = 9; i < hourList.length; i++) {
   if (dayjs().hour() == [i]) {
     hourList[i].setAttribute('style', 'background-color: #ff6961');
@@ -30,22 +26,21 @@ for (let i = 9; i < hourList.length; i++) {
   };
 };
 
-  //Needs to set Item inside local storage fo rretrieval on reload
+  //Needs to set Item inside local storage fo retrieval on reload with event listener
   $(saveBtn).click(function () {
-    // Get nearby values of the description in JQuery
+    // Get values of the description in JQuery from specific textareas
     var textArea = $(this).siblings(".description").val();
     var timeBlock = $(this).parent().attr("id");
     // Save text in local storage
     localStorage.setItem(timeBlock, textArea);
 });
 
-//Need a function to retrieve data on refresh
+//Used jQuery to retrieve data on refresh for each timeblock
 let hourNineValue= localStorage.getItem('hour-9')
 $('#hour-9 textarea').val(hourNineValue)
 
 let hourTenValue= localStorage.getItem('hour-10')
 $('#hour-10 textarea').val(hourTenValue)
-
 
 let hourElevenValue= localStorage.getItem('hour-11')
 $('#hour-11 textarea').val(hourElevenValue)
@@ -68,7 +63,7 @@ $('#hour-16 textarea').val(hourSixteenValue)
 let hourSeventeenValue= localStorage.getItem('hour-17')
 $('#hour-17 textarea').val(hourSeventeenValue)
 
-
+//Create date and time display for header
     setInterval(() =>
 {
   let presentDateTime = dayjs().format('dddd, MMMM D YYYY, h:mm:ss A');
